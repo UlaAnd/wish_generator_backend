@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from wishes.models import GeneratedWish, WishInformation
+from wishes.models import GeneratedWish, WishInformation, Question, Replay
 
 
 class WishInformationSerializer(serializers.ModelSerializer):
@@ -27,3 +27,22 @@ class GeneratedWishSerializer(serializers.ModelSerializer):
             "wish_information",
             "text",
         )
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = (
+            "id",
+            "text",
+        )
+
+
+class ReplaySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Replay
+        fields = (
+            "id",
+            "text",
+        )
+

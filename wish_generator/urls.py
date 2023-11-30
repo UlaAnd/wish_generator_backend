@@ -17,16 +17,20 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 
-from wishes.api import GeneratedWishViewSet, WishInformationViewSet
-from wishes.views import generate_wish
+from wishes.api import GeneratedWishViewSet, WishInformationViewSet, ReplayViewSet, QuestionViewSet
+from wishes.views import generate_wish, generate_replay
 
 router_wishes = routers.DefaultRouter()
 router_wishes.register(r"wishes-informations", WishInformationViewSet)
 router_wishes.register(r"wish-text", GeneratedWishViewSet)
+router_wishes.register(r"question", QuestionViewSet)
+router_wishes.register(r"replay", ReplayViewSet)
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v2/", include(router_wishes.urls)),
     path("generate-wish", generate_wish, name="generate_wish"),
+    path("generate-replay/", generate_replay, name="generate_replay"),
+
 ]

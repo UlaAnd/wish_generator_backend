@@ -14,7 +14,7 @@ class WishGenerateService:
     def get_prompt(self, info: WishInformation) -> str:
         prompt = f"""
             Make original wishes:
-            - language: English,
+            - language: Polish,
             - occasion: {info.occasion},
             - wish style: {info.occasion},
             - wishes_format: "rhyming, every 2 lines should have the same number of syllables",
@@ -33,3 +33,4 @@ class WishGenerateService:
             return "wishes in the form of a joke"
         else:
             return "rhyming, every 2 lines should have the same number of syllables"
+

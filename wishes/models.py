@@ -37,3 +37,11 @@ class GeneratedWish(models.Model):
         on_delete=models.CASCADE,
     )
     text = models.TextField()
+
+
+class Question(models.Model):
+    text = models.CharField(max_length=255)
+
+
+class Replay(models.Model):
+    text = models.CharField(max_length=255)

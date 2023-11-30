@@ -6,8 +6,9 @@ from rest_framework.request import Request
 from rest_framework import status
 from rest_framework.response import Response
 
-from wishes.models import GeneratedWish, WishInformation
-from wishes.serializers import GeneratedWishSerializer
+from wishes.controllers import OpenAiController
+from wishes.models import GeneratedWish, WishInformation, Question, Replay
+from wishes.serializers import GeneratedWishSerializer, ReplaySerializer
 from wishes.services import WishGenerateService
 
 
@@ -30,4 +31,20 @@ def generate_wish(request: Request) -> HttpResponse:
         wish_information=wish_info, text=wish
     )
     serializer = GeneratedWishSerializer(wish_text_model)
+    return Response(serializer.data,  status=status.HTTP_201_CREATED)
+
+
+
+@api_view(["POST"])
+@csrf_exempt
+def generate_replay(request: Request) -> HttpResponse:
+    data = request.data
+    question = data
+    controller = OpenAiController()
+    replay = controller.get_completion(prompt=question)
+    replay_object = Replay.objects.create(
+        text=replay
+    )
+    serializer = ReplaySerializer(replay_object)
+    print(Response)
     return Response(serializer.data,  status=status.HTTP_201_CREATED)
