@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
+from django.conf import settings
+from django.conf.urls.static import static
 
 from wishes.api import GeneratedWishViewSet, WishInformationViewSet, ReplayViewSet, QuestionViewSet
 from wishes.views import generate_wish, generate_replay
@@ -34,3 +36,5 @@ urlpatterns = [
     path("generate-replay/", generate_replay, name="generate_replay"),
 
 ]
++ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
++ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
