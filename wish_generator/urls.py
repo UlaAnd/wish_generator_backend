@@ -29,7 +29,7 @@ router_wishes.register(r"question", QuestionViewSet)
 router_wishes.register(r"replay", ReplayViewSet)
 
 
-urlpatterns = [
+urlpatterns = ([
     path("admin/", admin.site.urls),
     path("api/v2/", include(router_wishes.urls)),
     path("generate-wish", generate_wish, name="generate_wish"),
@@ -38,3 +38,4 @@ urlpatterns = [
 ]
 + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+               )
