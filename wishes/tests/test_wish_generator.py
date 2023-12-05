@@ -3,7 +3,7 @@ import pytest
 from wishes.controllers import OpenAiController
 from wishes.models import WishInformation
 from wishes.services import WishGenerateService
-from wishes.views import generate_wish
+from wishes.views import generate_wish, send_question
 
 
 @pytest.mark.django_db(True)
@@ -24,6 +24,5 @@ class TestWishGenerator:
         assert wish is not None
 
     def test_ai(self):
-        self.controller = OpenAiController()
-        replay = self.controller.get_completion(prompt="Jak masz na imie?")
-        return replay
+        answer = send_question()
+        return answer

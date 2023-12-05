@@ -1,3 +1,4 @@
+import requests
 from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -48,3 +49,21 @@ def generate_replay(request: Request) -> HttpResponse:
     serializer = ReplaySerializer(replay_object)
     print(Response)
     return Response(serializer.data,  status=status.HTTP_201_CREATED)
+
+
+def send_question():
+    url = 'http://127.0.0.1:8000/generate-replay/'  # Replace with your actual domain and port
+    question_data = {
+        'question': 'Your actual question goes here',
+        # Include any other required data in the request body
+    }
+    response = requests.post(url, data=question_data)
+
+    if response.status_code == 201:  # Assuming successful creation status
+        reply_data = response.json()
+        print("Generated Reply:", reply_data['text'])
+    else:
+        print("Error:", response.status_code, response.text)
+
+
+
