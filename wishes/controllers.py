@@ -1,8 +1,7 @@
 import openai
 
-from wish_generator.prod import api_key
-
-openai.api_key = api_key  # type: ignore # noqa
+from django.conf import settings
+openai.api_key = settings.API_KEY  # type: ignore # noqa
 
 class OpenAiController:
     def __init__(self) -> None:
