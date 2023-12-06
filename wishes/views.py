@@ -41,18 +41,18 @@ def generate_wish(request: Request) -> HttpResponse:
 def generate_replay(request: Request) -> HttpResponse:
     data = request.data
     question = data
-    controller = OpenAiController()
-    replay = controller.get_completion(prompt=question)
-    replay_object = Replay.objects.create(
-        text=replay
-    )
-    serializer = ReplaySerializer(replay_object)
-    print(Response)
-    return Response(serializer.data,  status=status.HTTP_201_CREATED)
-
+    # controller = OpenAiController()
+    # replay = controller.get_completion(prompt=question)
+    # replay_object = Replay.objects.create(
+    #     text=replay
+    # )
+    # serializer = ReplaySerializer(replay_object)
+    # print(Response)
+    # return Response(serializer.data,  status=status.HTTP_201_CREATED)
+    return {"answer" : question}
 
 def send_question():
-    url = 'http://127.0.0.1:8000/generate-replay/'  # Replace with your actual domain and port
+    url = 'https://wishgenerator.onrender.com/generate-replay/'  # Replace with your actual domain and port
     question_data = {
         'question': 'Your actual question goes here',
         # Include any other required data in the request body
