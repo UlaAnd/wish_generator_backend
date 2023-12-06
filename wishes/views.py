@@ -41,7 +41,10 @@ def generate_wish(request: Request) -> HttpResponse:
 def generate_replay(request: Request) -> HttpResponse:
     data = request.data
     question = data.get("question")
-    system = "Answer the question"
+    Question.objects.create(text=question)
+    all_questions = Question.objects.all()
+    all_texts = [question.text for question in all_questions]
+    system = f"Answer the question also with info below {all_texts}"
     controller = OpenAiController()
     replay = controller.get_completion(prompt=question)
     full_replay = {"reply": replay}
