@@ -1,7 +1,8 @@
 import openai
 
 from django.conf import settings
-openai.api_key = settings.API_KEY  # type: ignore # noqa
+openai.api_key = settings.API_KEY
+# type: ignore # noqa
 
 class OpenAiController:
     def __init__(self) -> None:
