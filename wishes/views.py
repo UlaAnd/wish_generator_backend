@@ -39,8 +39,7 @@ def generate_wish(request: Request) -> HttpResponse:
 @api_view(["POST"])
 @csrf_exempt
 def generate_replay(request: Request) -> HttpResponse:
-    data = request.data
-    question = data
+    data = request
     # controller = OpenAiController()
     # replay = controller.get_completion(prompt=question)
     # replay_object = Replay.objects.create(
@@ -49,7 +48,7 @@ def generate_replay(request: Request) -> HttpResponse:
     # serializer = ReplaySerializer(replay_object)
     # print(Response)
     # return Response(serializer.data,  status=status.HTTP_201_CREATED)
-    return Response({"answer": question},  status=status.HTTP_201_CREATED)
+    return Response({"answer": data},  status=status.HTTP_201_CREATED)
 
 def send_question():
     url = 'https://wishgenerator.onrender.com/generate-replay/'  # Replace with your actual domain and port
