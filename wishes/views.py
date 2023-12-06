@@ -39,7 +39,8 @@ def generate_wish(request: Request) -> HttpResponse:
 @api_view(["POST"])
 @csrf_exempt
 def generate_replay(request: Request) -> HttpResponse:
-    data = request
+    data = [request]
+
     # controller = OpenAiController()
     # replay = controller.get_completion(prompt=question)
     # replay_object = Replay.objects.create(
