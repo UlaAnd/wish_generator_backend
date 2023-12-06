@@ -8,6 +8,7 @@ from wish_generator.settings import *  # type: ignore  # noqa
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 API_KEY = os.getenv("API_KEY")
+DEVAI_KEY = os.getenv("DEV_AI")
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 DEBUG = True
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"

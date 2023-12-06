@@ -26,3 +26,8 @@ class TestWishGenerator:
     def test_ai(self):
         answer = send_question()
         return answer
+
+    def test_ai(self):
+        controller = OpenAiController()
+        replay = controller.get_completion(prompt="question")
+        return replay
