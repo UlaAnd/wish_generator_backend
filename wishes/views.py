@@ -49,7 +49,7 @@ def generate_replay(request: Request) -> HttpResponse:
     # serializer = ReplaySerializer(replay_object)
     # print(Response)
     # return Response(serializer.data,  status=status.HTTP_201_CREATED)
-    return {"answer" : question}
+    return Response({"answer": question},  status=status.HTTP_201_CREATED)
 
 def send_question():
     url = 'https://wishgenerator.onrender.com/generate-replay/'  # Replace with your actual domain and port
