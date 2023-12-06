@@ -46,7 +46,7 @@ def generate_replay(request: Request) -> HttpResponse:
     all_texts = [question.text for question in all_questions]
     system = f"Answer the question also with info below {all_texts}"
     controller = OpenAiController()
-    replay = controller.get_completion(prompt=question)
+    replay = controller.get_completion(prompt=question, system=system)
     full_replay = {"reply": replay}
     return Response(full_replay,  status=status.HTTP_201_CREATED)
 
