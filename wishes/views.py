@@ -48,6 +48,7 @@ def generate_replay(request: Request) -> HttpResponse:
     controller = OpenAiController()
     replay = controller.get_completion(prompt=question, system=system)
     full_replay = {"reply": replay}
+    Question.objects.all().delete()
     return Response(full_replay,  status=status.HTTP_201_CREATED)
 
 
